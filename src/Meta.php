@@ -19,7 +19,7 @@ class Meta
 	public static function get_all_post_meta( $post ) {
 		return [
 			'title' => self::get_post_meta_title( $post ),
-			'description' => '',
+			'description' => self::get_post_meta_description( $post ),
 			'og' => [
 				'title' => self::get_post_meta_title( $post ),
 				'description' => '',
@@ -31,7 +31,7 @@ class Meta
 	}
 
 	/**
-	 * Get the post's meta title
+	 * Get the post's meta title.
 	 *
 	 * @param \WP_Post $post The post.
 	 * @return string
@@ -44,5 +44,38 @@ class Meta
 		}
 
 		return $title;
+	}
+
+	/**
+	 * Get the post's meta description.
+	 *
+	 * @param \WP_Post $post The post.
+	 * @return string
+	 */
+	public static function get_post_meta_description( $post ) {
+		$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+
+		if ( empty( $description ) ) {
+			$description = self::get_trimmed_meta_description( $post->post_content );
+		}
+		return $description;
+	}
+
+	/**
+	 * Get text trimmed for a meta description.
+	 *
+	 * @param string $text The text to trim.
+	 * @return string
+	 */
+	public static function get_trimmed_meta_description( $text ) {
+		$limit = 160;
+
+		if ( strlen( $text ) <= $limit ) {
+			return $text;
+		}
+
+		$wrapped_text = explode( '\n', wordwrap( $text , $limit, '\n' ) );
+
+		return $wrapped_text[0];
 	}
 }
