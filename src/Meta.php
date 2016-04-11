@@ -19,13 +19,17 @@ class Meta
 	public static function get_all_post_meta( $post ) {
 		return [
 			'title' => self::get_post_meta_title( $post ),
-			'description' => self::get_post_meta_description( $post ),
-			'og' => [
-				'title' => self::get_post_meta_title( $post ),
-				'description' => '',
-			],
-			'twitter' => [
-				'title' => '',
+			'tags' => [
+				[ 'name' => 'description',			'content' => self::get_post_meta_description( $post ) ],
+				[ 'property' => 'og:locale',		'content' => get_locale() ],
+				[ 'property' => 'og:type',			'content' => 'article' ],
+				[ 'property' => 'og:title',			'content' => '' ],
+				[ 'property' => 'og:description',	'content' => '' ],
+				[ 'property' => 'og:url',			'content' => get_permalink( $post->ID ) ],
+				[ 'property' => 'og:site_name',		'content' => get_bloginfo( 'title' ) ],
+				[ 'name' => 'twitter:card',			'content' => 'summary' ],
+				[ 'name' => 'twitter:description',	'content' => '' ],
+				[ 'name' => 'twitter:title',		'content' => '' ],
 			],
 		];
 	}
