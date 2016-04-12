@@ -32,9 +32,9 @@ class Meta
 				[ 'property' => 'og:updated_time',	'content' => get_post_modified_time( 'c', true, $post ) ],
 				[ 'property' => 'og:image',			'content' => self::get_post_og_image( $post ) ],
 				[ 'name' => 'twitter:card',			'content' => 'summary' ],
-				[ 'name' => 'twitter:description',	'content' => '' ],
-				[ 'name' => 'twitter:title',		'content' => '' ],
-				[ 'name' => 'twitter:image',		'content' => '' ],
+				[ 'name' => 'twitter:title',		'content' => self::get_post_twitter_title( $post ) ],
+				[ 'name' => 'twitter:description',	'content' => self::get_post_twitter_description( $post ) ],
+				[ 'name' => 'twitter:image',		'content' => self::get_post_twitter_image( $post ) ],
 			],
 		];
 	}
@@ -130,8 +130,68 @@ class Meta
 		$image = get_post_meta( $post->ID, '_yoast_wpseo_opengraph-image', true );
 
 		if ( empty( $image ) ) {
-			$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
+			$image = self::get_fallback_image( $post );
 		}
+
+		return $image;
+	}
+
+	/**
+	 * Get the post's twitter title.
+	 *
+	 * @param \WP_Post $post The post.
+	 * @return string
+	 */
+	public static function get_post_twitter_title( $post ) {
+		$title = get_post_meta( $post->ID, '_yoast_wpseo_twitter-title', true );
+
+		if ( empty( $title ) ) {
+			$title = self::get_post_meta_title( $post );
+		}
+
+		return $title;
+	}
+
+	/**
+	 * Get the post's twitter description.
+	 *
+	 * @param \WP_Post $post The post.
+	 * @return string
+	 */
+	public static function get_post_twitter_description( $post ) {
+		$description = get_post_meta( $post->ID, '_yoast_wpseo_twitter-description', true );
+
+		if ( empty( $description ) ) {
+			$description = self::get_post_meta_description( $post );
+		}
+
+		return $description;
+	}
+
+	/**
+	 * Get the post's twitter image.
+	 *
+	 * @param \WP_Post $post The post.
+	 * @return string
+	 */
+	public static function get_post_twitter_image( $post ) {
+		$image = get_post_meta( $post->ID, '_yoast_wpseo_twitter-image', true );
+
+		if ( empty( $image ) ) {
+			$image = self::get_fallback_image( $post );
+		}
+
+		return $image;
+	}
+
+	/**
+	 * Get a fallback image for the post.
+	 *
+	 * @param \WP_Post $post The post.
+	 * @return mixed
+	 */
+	private static function get_fallback_image( $post ) {
+		$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 
 		if ( empty( $image ) ) {
 			$logo = Acf::get_option_field( 'site_logo' );
@@ -140,5 +200,4 @@ class Meta
 
 		return $image;
 	}
-	
 }
