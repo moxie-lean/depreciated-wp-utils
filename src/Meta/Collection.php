@@ -10,7 +10,7 @@
  */
 class Collection
 {
-	const TITLE_FILTER = 'ln_utils_meta_collection_title';
+	const TITLE_FILTER = 'ln_utils_meta_collection_%s_title';
 
 	/**
 	 * Get all metadata for a collection.
@@ -53,6 +53,9 @@ class Collection
 			$post_type_name = $post_type->labels->name;
 		}
 
-		return apply_filters( self::TITLE_FILTER, $post_type_name . ' - ' . get_bloginfo( 'title' ), $post_type );
+		return apply_filters(
+			sprintf( self::TITLE_FILTER, $post_type ),
+			$post_type_name . ' - ' . get_bloginfo( 'title' )
+		);
 	}
 }
