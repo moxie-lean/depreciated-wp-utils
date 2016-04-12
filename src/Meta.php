@@ -1,5 +1,6 @@
 <?php namespace Lean\Utils;
 
+use Lean\Elements\Collection\SiteIdentity;
 use Leean\Acf;
 
 /**
@@ -71,6 +72,7 @@ class Meta
 		if ( empty( $description ) ) {
 			$description = self::get_trimmed_meta_description( $post->post_content );
 		}
+
 		return $description;
 	}
 
@@ -198,7 +200,7 @@ class Meta
 		$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 
 		if ( empty( $image ) ) {
-			$logo = Acf::get_option_field( 'site_logo' );
+			$logo = Acf::get_option_field( SiteIdentity::LOGO_KEY );
 			$image = is_array( $logo ) ? $logo['src'] : get_site_icon_url();
 		}
 
