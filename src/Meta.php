@@ -49,7 +49,11 @@ class Meta
 		$title = get_post_meta( $post->ID, '_yoast_wpseo_title', true );
 
 		if ( empty( $title ) ) {
-			$title = $post->post_title;
+			if ( (int) get_option( 'page_on_front' ) === $post->ID ) {
+				$title = get_bloginfo( 'title' );
+			} else {
+				$title = $post->post_title . ' - ' . get_bloginfo( 'title' );
+			}
 		}
 
 		return $title;
