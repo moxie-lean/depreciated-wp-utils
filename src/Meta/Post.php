@@ -5,10 +5,10 @@ use Leean\Acf;
 use Lean\Utils\Strings;
 
 /**
- * A suite of functions for working with a page's metadata.
+ * A suite of functions for working with a post's metadata.
  * Uses data entered via the Yoast SEO plugin's UI by default, with a suitable fallback.
  *
- * Class Meta.
+ * Class Post.
  *
  * @package Lean\Utils
  */

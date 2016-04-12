@@ -4,7 +4,7 @@
  * A suite of functions for working with a collection's metadata.
  * Uses data entered via the Yoast SEO plugin's UI by default, with a suitable fallback.
  *
- * Class Meta.
+ * Class Collection.
  *
  * @package Lean\Utils
  */
@@ -38,6 +38,12 @@ class Collection
 		];
 	}
 
+	/**
+	 * Get the title for a collection.
+	 *
+	 * @param string $post_type The post type.
+	 * @return mixed
+	 */
 	public static function get_collection_title( $post_type ) {
 		$post_type_name = 'Blog';
 
