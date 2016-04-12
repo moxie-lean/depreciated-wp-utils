@@ -2,6 +2,7 @@
 
 use Lean\Elements\Collection\SiteIdentity;
 use Leean\Acf;
+use Lean\Utils\Strings;
 
 /**
  * A suite of functions for working with a page's metadata.
@@ -70,28 +71,10 @@ class Post
 		$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
 
 		if ( empty( $description ) ) {
-			$description = self::get_trimmed_meta_description( $post->post_content );
+			$description = Strings::trim_to_nearest_word( $post->post_content, 160 );
 		}
 
 		return $description;
-	}
-
-	/**
-	 * Get text trimmed for a meta description.
-	 *
-	 * @param string $text The text to trim.
-	 * @return string
-	 */
-	public static function get_trimmed_meta_description( $text ) {
-		$limit = 160;
-
-		if ( strlen( $text ) <= $limit ) {
-			return $text;
-		}
-
-		$wrapped_text = explode( '\n', wordwrap( $text , $limit, '\n' ) );
-
-		return is_array( $wrapped_text ) ? $wrapped_text[0] : $text;
 	}
 
 	/**
