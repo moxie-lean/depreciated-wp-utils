@@ -1,13 +1,13 @@
 <?php namespace Lean\Utils;
 
 /**
- * A suite of functions for working strings.
+ * A suite of functions for working text strings.
  *
- * Class Strings.
+ * Class Text.
  *
  * @package Lean\Utils
  */
-class Strings
+class Text
 {
 	/**
 	 * Get text trimmed to the nearest word.

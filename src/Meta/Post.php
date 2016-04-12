@@ -2,7 +2,7 @@
 
 use Lean\Elements\Collection\SiteIdentity;
 use Leean\Acf;
-use Lean\Utils\Strings;
+use Lean\Utils\Text;
 
 /**
  * A suite of functions for working with a post's metadata.
@@ -71,7 +71,7 @@ class Post
 		$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
 
 		if ( empty( $description ) ) {
-			$description = Strings::trim_to_nearest_word( $post->post_content, 160 );
+			$description = Text::trim_to_nearest_word( $post->post_content, 160 );
 		}
 
 		return $description;
