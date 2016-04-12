@@ -91,7 +91,7 @@ class Post
 
 		$wrapped_text = explode( '\n', wordwrap( $text , $limit, '\n' ) );
 
-		return $wrapped_text[0];
+		return is_array( $wrapped_text ) ? $wrapped_text[0] : $text;
 	}
 
 	/**
