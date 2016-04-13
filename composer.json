@@ -16,11 +16,13 @@
     }
   ],
   "require": {
-    "php": ">=5.4"
+    "php": ">=5.4",
+    "moxie-leean/wp-acf": "0.*.*",
+    "moxie-leean/wp-elements": "0.*.*"
   },
   "autoload": {
     "psr-4": {
-      "Leean\\Utils\\": "src/"
+      "Lean\\Utils\\": "src/"
     }
   },
   "require-dev": {
