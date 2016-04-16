@@ -58,7 +58,7 @@ class Collection
 		);
 		$collection_title = sprintf(
 			'%s - %s',
-			$post_type_name, get_bloginfo('title')
+			$post_type_name, get_bloginfo( 'title' )
 		);
 		return apply_filters( $filter_name, $collection_title );
 	}
