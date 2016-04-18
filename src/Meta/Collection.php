@@ -48,14 +48,18 @@ class Collection
 		$post_type_name = 'Blog';
 
 		if ( 'post' !== $post_type ) {
-			$post_type = get_post_type_object( $post_type );
-
-			$post_type_name = $post_type->labels->name;
+			$type = get_post_type_object( $post_type );
+			$post_type_name = $type->labels->name;
 		}
 
-		return apply_filters(
-			sprintf( self::TITLE_FILTER, $post_type ),
-			$post_type_name . ' - ' . get_bloginfo( 'title' )
+		$filter_name = sprintf(
+			self::TITLE_FILTER,
+			is_string( $post_type ) ? $post_type : $post_type_name
 		);
+		$collection_title = sprintf(
+			'%s - %s',
+			$post_type_name, get_bloginfo( 'title' )
+		);
+		return apply_filters( $filter_name, $collection_title );
 	}
 }
