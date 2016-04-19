@@ -37,6 +37,7 @@ class Post
 				[ 'name' => 'twitter:title',		'content' => self::get_post_twitter_title( $post ) ],
 				[ 'name' => 'twitter:description',	'content' => self::get_post_twitter_description( $post ) ],
 				[ 'name' => 'twitter:image',		'content' => self::get_post_twitter_image( $post ) ],
+				[ 'name' => 'google-site-verification', 'content' => Site::google_verification() ],
 			],
 		];
 	}
