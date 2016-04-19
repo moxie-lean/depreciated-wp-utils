@@ -8,8 +8,8 @@
  *
  * @package Lean\Utils
  */
-class Collection
-{
+class Collection {
+
 	const TITLE_FILTER = 'ln_utils_meta_collection_%s_title';
 
 	/**
@@ -34,6 +34,7 @@ class Collection
 				[ 'name' => 'twitter:card',			'content' => 'summary' ],
 				[ 'name' => 'twitter:title',		'content' => $title ],
 				[ 'name' => 'twitter:description',	'content' => Post::get_post_twitter_description( $lead_post ) ],
+				[ 'name' => 'google-site-verification', 'content' => Site::google_verification() ],
 			],
 		];
 	}
