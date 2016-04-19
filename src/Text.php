@@ -20,7 +20,9 @@ class Text
 		if ( strlen( $text ) <= $char_limit ) {
 			return $text;
 		}
+
 		$wrapped_text = explode( '\n', wordwrap( $text , $char_limit, '\n' ) );
+
 		return is_array( $wrapped_text ) ? $wrapped_text[0] : substr( $text, 0, $char_limit );
 	}
 }
