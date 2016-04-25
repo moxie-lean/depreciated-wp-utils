@@ -7,8 +7,7 @@
  *
  * @package Lean\Utils
  */
-class Text
-{
+class Text {
 	/**
 	 * Get text trimmed to the nearest word.
 	 *

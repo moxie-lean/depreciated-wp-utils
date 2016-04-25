@@ -7,18 +7,18 @@
 The easiest way to install this package is by using composer from your terminal:
 
 ```bash
-composer require moxie-leean/wp-utils --save
+composer require moxie-lean/wp-utils --save
 ```
 
 Or by adding the following lines on your `composer.json` file
 
 ```json
 "require": {
-  "moxie-leean/wp-utils": "dev-master"
+  "moxie-lean/wp-utils": "dev-master"
 }
 ```
 
-This will download the files from the [packagelist site](https://packagist.org/packages/moxie-leean/wp-utils) 
+This will download the files from the [packagelist site](https://packagist.org/packages/moxie-lean/wp-utils) 
 and set you up with the latest version located on master branch of the repository. 
 
 After that you can include the `autoload.php` file in order to
