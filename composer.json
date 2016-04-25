@@ -1,5 +1,5 @@
 {
-  "name": "moxie-leean/wp-utils",
+  "name": "moxie-lean/wp-utils",
   "description": "A suite of useful functions for your WordPress theme",
   "keywords": ["wordpress"],
   "homepage": "https://github.com/moxie-leean/wp-utils",
@@ -17,7 +17,7 @@
   ],
   "require": {
     "php": ">=5.4",
-    "moxie-leean/wp-acf": "0.*.*",
+    "moxie-lean/wp-acf": "1.*.*",
     "moxie-lean/wp-elements": "0.*.*"
   },
   "autoload": {

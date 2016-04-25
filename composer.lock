@@ -4,9 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9caa44ed0ad9fdb08b3a385ddbcd936a",
-    "content-hash": "58fb010cc6fd2a6b928f4c1b5f0eca4f",
+    "hash": "28c7a4ac3b0f7438f7751012cbedd3ae",
+    "content-hash": "911dd5de2f939dd3be05dcb95ff779af",
     "packages": [
+        {
+            "name": "moxie-lean/wp-acf",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moxie-leean/wp-acf.git",
+                "reference": "15232b3814aa7be8cf01b1d217f75ded1670d7bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moxie-leean/wp-acf/zipball/15232b3814aa7be8cf01b1d217f75ded1670d7bc",
+                "reference": "15232b3814aa7be8cf01b1d217f75ded1670d7bc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "2.*",
+                "wp-coding-standards/wpcs": "0.9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lean\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Fenton",
+                    "email": "devs@getmoxied.net"
+                },
+                {
+                    "name": "Crisoforo Gaspar",
+                    "email": "devs@getmoxied.net"
+                }
+            ],
+            "description": "Helper functions for working with Advanced Custom Fields",
+            "homepage": "https://github.com/moxie-leean/wp-acf",
+            "keywords": [
+                "acf",
+                "wordpress"
+            ],
+            "time": "2016-04-24 03:21:52"
+        },
         {
             "name": "moxie-lean/wp-elements",
             "version": "0.2.4",
@@ -50,55 +99,6 @@
                 "wordpress"
             ],
             "time": "2016-04-07 16:35:55"
-        },
-        {
-            "name": "moxie-leean/wp-acf",
-            "version": "0.4.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/moxie-leean/wp-acf.git",
-                "reference": "e3c98a72ebc20b84571625d5ed0ff9d5ea5f4492"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/moxie-leean/wp-acf/zipball/e3c98a72ebc20b84571625d5ed0ff9d5ea5f4492",
-                "reference": "e3c98a72ebc20b84571625d5ed0ff9d5ea5f4492",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "2.*",
-                "wp-coding-standards/wpcs": "0.9.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Leean\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Fenton",
-                    "email": "devs@getmoxied.net"
-                },
-                {
-                    "name": "Crisoforo Gaspar",
-                    "email": "devs@getmoxied.net"
-                }
-            ],
-            "description": "Helper functions for working with Advanced Custom Fields",
-            "homepage": "https://github.com/moxie-leean/wp-acf",
-            "keywords": [
-                "acf",
-                "wordpress"
-            ],
-            "time": "2016-04-05 00:51:32"
         }
     ],
     "packages-dev": [

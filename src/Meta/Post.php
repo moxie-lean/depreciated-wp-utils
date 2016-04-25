@@ -1,7 +1,7 @@
 <?php namespace Lean\Utils\Meta;
 
 use Lean\Elements\Collection\SiteIdentity;
-use Leean\Acf;
+use Lean\Acf;
 use Lean\Utils\Text;
 
 /**
@@ -12,8 +12,7 @@ use Lean\Utils\Text;
  *
  * @package Lean\Utils
  */
-class Post
-{
+class Post {
 	/**
 	 * Get all metadata for a post.
 	 *
