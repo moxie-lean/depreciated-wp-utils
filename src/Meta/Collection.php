@@ -20,22 +20,22 @@ class Collection {
 	 */
 	public static function get_all_collection_meta( $lead_post ) {
 		$title = self::get_collection_title( $lead_post->post_type );
-
+		$tags = [
+			[ 'name' => 'description',			'content' => Post::get_post_meta_description( $lead_post ) ],
+			[ 'property' => 'og:locale',		'content' => get_locale() ],
+			[ 'property' => 'og:type',			'content' => 'summary' ],
+			[ 'property' => 'og:title',			'content' => $title ],
+			[ 'property' => 'og:description',	'content' => Post::get_post_og_description( $lead_post ) ],
+			[ 'property' => 'og:url',			'content' => get_permalink( $lead_post->ID ) ],
+			[ 'property' => 'og:site_name',		'content' => get_bloginfo( 'title' ) ],
+			[ 'name' => 'twitter:card',			'content' => 'summary' ],
+			[ 'name' => 'twitter:title',		'content' => $title ],
+			[ 'name' => 'twitter:description',	'content' => Post::get_post_twitter_description( $lead_post ) ],
+		];
+		$tags = array_merge( $tags, Site::webmaster_tools() );
 		return [
 			'title' => $title,
-			'tags' => [
-				[ 'name' => 'description',			'content' => Post::get_post_meta_description( $lead_post ) ],
-				[ 'property' => 'og:locale',		'content' => get_locale() ],
-				[ 'property' => 'og:type',			'content' => 'summary' ],
-				[ 'property' => 'og:title',			'content' => $title ],
-				[ 'property' => 'og:description',	'content' => Post::get_post_og_description( $lead_post ) ],
-				[ 'property' => 'og:url',			'content' => get_permalink( $lead_post->ID ) ],
-				[ 'property' => 'og:site_name',		'content' => get_bloginfo( 'title' ) ],
-				[ 'name' => 'twitter:card',			'content' => 'summary' ],
-				[ 'name' => 'twitter:title',		'content' => $title ],
-				[ 'name' => 'twitter:description',	'content' => Post::get_post_twitter_description( $lead_post ) ],
-				[ 'name' => 'google-site-verification', 'content' => Site::google_verification() ],
-			],
+			'tags' => $tags,
 		];
 	}
 

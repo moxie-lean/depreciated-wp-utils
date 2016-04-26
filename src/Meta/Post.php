@@ -20,24 +20,26 @@ class Post {
 	 * @return array
 	 */
 	public static function get_all_post_meta( $post ) {
+		$tags = [
+			[ 'name' => 'description',			'content' => self::get_post_meta_description( $post ) ],
+			[ 'property' => 'og:locale',		'content' => get_locale() ],
+			[ 'property' => 'og:type',			'content' => 'article' ],
+			[ 'property' => 'og:title',			'content' => self::get_post_og_title( $post ) ],
+			[ 'property' => 'og:description',	'content' => self::get_post_og_description( $post ) ],
+			[ 'property' => 'og:url',			'content' => get_permalink( $post->ID ) ],
+			[ 'property' => 'og:site_name',		'content' => get_bloginfo( 'title' ) ],
+			[ 'property' => 'og:updated_time',	'content' => get_post_modified_time( 'c', true, $post ) ],
+			[ 'property' => 'og:image',			'content' => self::get_post_og_image( $post ) ],
+			[ 'name' => 'twitter:card',			'content' => 'summary' ],
+			[ 'name' => 'twitter:title',		'content' => self::get_post_twitter_title( $post ) ],
+			[ 'name' => 'twitter:description',	'content' => self::get_post_twitter_description( $post ) ],
+			[ 'name' => 'twitter:image',		'content' => self::get_post_twitter_image( $post ) ],
+		];
+		$tags = array_merge( $tags, Site::webmaster_tools() );
+
 		return [
 			'title' => self::get_post_meta_title( $post ),
-			'tags' => [
-				[ 'name' => 'description',			'content' => self::get_post_meta_description( $post ) ],
-				[ 'property' => 'og:locale',		'content' => get_locale() ],
-				[ 'property' => 'og:type',			'content' => 'article' ],
-				[ 'property' => 'og:title',			'content' => self::get_post_og_title( $post ) ],
-				[ 'property' => 'og:description',	'content' => self::get_post_og_description( $post ) ],
-				[ 'property' => 'og:url',			'content' => get_permalink( $post->ID ) ],
-				[ 'property' => 'og:site_name',		'content' => get_bloginfo( 'title' ) ],
-				[ 'property' => 'og:updated_time',	'content' => get_post_modified_time( 'c', true, $post ) ],
-				[ 'property' => 'og:image',			'content' => self::get_post_og_image( $post ) ],
-				[ 'name' => 'twitter:card',			'content' => 'summary' ],
-				[ 'name' => 'twitter:title',		'content' => self::get_post_twitter_title( $post ) ],
-				[ 'name' => 'twitter:description',	'content' => self::get_post_twitter_description( $post ) ],
-				[ 'name' => 'twitter:image',		'content' => self::get_post_twitter_image( $post ) ],
-				[ 'name' => 'google-site-verification', 'content' => Site::google_verification() ],
-			],
+			'tags' => $tags,
 		];
 	}
 
