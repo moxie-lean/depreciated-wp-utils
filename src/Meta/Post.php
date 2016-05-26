@@ -73,7 +73,7 @@ class Post {
 		$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
 
 		if ( empty( $description ) ) {
-			$description = Text::trim_to_nearest_word( $post->post_content, 160 );
+			$description = Text::trim_to_nearest_word( wp_strip_all_tags( $post->post_content ), 160 );
 		}
 
 		return $description;
