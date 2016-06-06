@@ -1,5 +1,7 @@
 # Utils
 
+**This package is depreciated. LEAN now uses the WordPress REST API plugins instead**
+
 > A suite of useful functions for your WordPress theme
 
 ## Getting Started
